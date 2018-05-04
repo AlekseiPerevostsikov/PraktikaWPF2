@@ -24,6 +24,8 @@ namespace Praktika_wpf2_Perevostsikov
         {
 
         }
+        //s
+
         public virtual Camp Camp { get; set; }
     }
 }
