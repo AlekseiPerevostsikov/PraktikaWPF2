@@ -1,0 +1,28 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Praktika_wpf2_Perevostsikov"
+        xmlns:Collections="clr-namespace:System.Collections;assembly=mscorlib" x:Class="Praktika_wpf2_Perevostsikov.MainWindow"
+        mc:Ignorable="d"
+        Title="Camps" Height="388.235" Width="601.471" WindowStartupLocation="CenterScreen">
+    <Grid>
+
+        <ListView SelectedIndex="0" x:Name="CampList" Height="199" Margin="0,103,10,0" VerticalAlignment="Top">
+
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding CampName}" Width="150" Header="Camp name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="400" Header="Decription"/>
+                </GridView>
+            </ListView.View>
+
+
+        </ListView>
+        <TextBox x:Name="txtCampName" HorizontalAlignment="Left" Height="23" Margin="191,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" TextChanged="txtCampName_TextChanged"/>
+        <Label Content="Search Camp by Name" HorizontalAlignment="Left" Margin="45,57,0,0" VerticalAlignment="Top" Width="141"/>
+
+    </Grid>
+</Window>
