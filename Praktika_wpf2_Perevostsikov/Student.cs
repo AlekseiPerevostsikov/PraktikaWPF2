@@ -20,6 +20,10 @@ namespace Praktika_wpf2_Perevostsikov
         public string Adress { get; set; }
         public int CampId { get; set; }
 
+        public Student()
+        {
+
+        }
         public virtual Camp Camp { get; set; }
     }
 }
