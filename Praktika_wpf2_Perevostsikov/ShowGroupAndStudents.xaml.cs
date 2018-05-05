@@ -191,17 +191,73 @@ namespace Praktika_wpf2_Perevostsikov
 
         private void btnAddGroup_Click(object sender, RoutedEventArgs e)
         {
+            if (GroupList.SelectedIndex >= 0)
+            {
+                Controll.GroupId = groupId;
+                Controll.CampId = campId;
 
+                Controll.AddOrEdit = "addGroup";
+                AddOrEdit editStud = new AddOrEdit();
+                editStud.Title = "Add Group";
+                editStud.Show();
+            }
+            else
+            {
+                MessageBox.Show("Group not choosed!", "Error");
+            }
         }
 
         private void btnEditGroup_Click(object sender, RoutedEventArgs e)
         {
+            if (GroupList.SelectedIndex >= 0)
+            {
+                Controll.GroupId = groupId;
+                Controll.CampId = campId;
 
+                Controll.AddOrEdit = "editGroup";
+                AddOrEdit editStud = new AddOrEdit();
+                editStud.Title = "Edit Group";
+                editStud.Show();
+            }
+            else
+            {
+                MessageBox.Show("Group not choosed!", "Error");
+            }
         }
 
         private void btnDeleteGroup_Click(object sender, RoutedEventArgs e)
         {
+            if (GroupList.SelectedIndex >= 0)
+            {
+                Controll.GroupId = groupId;
 
+                if (MessageBox.Show("Delete Group \"" + DB.GetGroupByGroupId(groupId).GroupName + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                }
+                else
+                {
+                    Group deleteGroup = DB.GetGroupByGroupId(groupId);
+
+                    int arv = DB.deleteGroup(deleteGroup);
+
+                    if (arv != 0)
+                    {
+                        DB.Save();
+                        MessageBox.Show("Was deleted!", "Succesful");
+                        GroupList.SelectedIndex = 0;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while deleting!", "Error");
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Group not choosed!", "Error");
+            }
         }
 
 
@@ -215,11 +271,18 @@ namespace Praktika_wpf2_Perevostsikov
 
         private void btnAddStudent_Click(object sender, RoutedEventArgs e)
         {
-            Controll.AddOrEdit = "addStudent";
-            Controll.GroupId = groupId;
-            AddOrEdit addStu = new AddOrEdit();
-            addStu.Title = "Add Student";
-            addStu.Show();
+            if (GroupList.SelectedIndex >= 0)
+            {
+                Controll.AddOrEdit = "addStudent";
+                Controll.GroupId = groupId;
+                AddOrEdit addStu = new AddOrEdit();
+                addStu.Title = "Add Student";
+                addStu.Show();
+            }
+            else
+            {
+                MessageBox.Show("Camp not choosed!", "Error");
+            }
         }
 
         private void btnEditStudent_Click(object sender, RoutedEventArgs e)
@@ -246,6 +309,30 @@ namespace Praktika_wpf2_Perevostsikov
             {
                 Controll.GroupId = groupId;
                 Controll.StudentId = studentId;
+
+
+                if (MessageBox.Show("Delete Student \"" + DB.GetStudentByStudentId(studentId).LastName + " " + DB.GetStudentByStudentId(studentId).FirstName + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                }
+                else
+                {
+                    Student deleteStudent = DB.GetStudentByStudentId(studentId);
+
+                    int arv = DB.deleteStudent(deleteStudent);
+
+                    if (arv != 0)
+                    {
+                        DB.Save();
+                        MessageBox.Show("Was deleted!", "Succesful");
+                        StudentList.SelectedIndex = 0;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while deleting!", "Error");
+                    }
+
+                }
             }
             else
             {

@@ -26,8 +26,16 @@ namespace Praktika_wpf2_Perevostsikov
 
         public static List<Group> GetAllGroupsByCampId(int campId)
         {
-            return c.Groups.Where(a => a.Camp.ID == campId).ToList();
+            return c.Groups.Where(a => a.Camp.ID == campId).OrderBy(a=>a.ID).ToList();
         }
+
+
+        public static List<Group> GetAllGroups()
+        {
+            return c.Groups.ToList();
+        }
+
+
 
 
         public static Group GetGroupByGroupId(int groupId)
@@ -75,7 +83,6 @@ namespace Praktika_wpf2_Perevostsikov
         public static int updateCamp(Camp camp)
         {
             int arv = 0;
-
             //foreach (var i in c.Students)
             //{
             //    if (i.Camp.ID == camp.ID)
@@ -83,12 +90,9 @@ namespace Praktika_wpf2_Perevostsikov
             //        i.Camp = camp;
             //    }
             //}
-
             var original = c.Camps.Find(camp.ID);
             c.Entry(original).CurrentValues.SetValues(camp);
-
             arv = 1;
-
             return arv;
         }
 
@@ -98,20 +102,21 @@ namespace Praktika_wpf2_Perevostsikov
         public static int updateStudent(Student student)
         {
             int arv = 0;
-
-            //foreach (var i in c.Students)
-            //{
-            //    if (i.Camp.ID == camp.ID)
-            //    {
-            //        i.Camp = camp;
-            //    }
-            //}
-
             var original = c.Students.Find(student.ID);
             c.Entry(original).CurrentValues.SetValues(student);
 
             arv = 1;
+            return arv;
+        }
 
+
+        public static int updateGroup(Group group)
+        {
+            int arv = 0;
+            var original = c.Groups.Find(group.ID);
+            c.Entry(original).CurrentValues.SetValues(group);
+
+            arv = 1;
             return arv;
         }
 
@@ -121,29 +126,61 @@ namespace Praktika_wpf2_Perevostsikov
         public static int addCamp(Camp camp)
         {
             int arv = 0;
-
             c.Camps.Add(camp);
-
             arv = 1;
             return arv;
         }
+
+
+
+
+        public static int addStudent(Student student)
+        {
+            int arv = 0;
+            c.Students.Add(student);
+            arv = 1;
+            return arv;
+        }
+
+
+        public static int addGroup(Group group)
+        {
+            int arv = 0;
+            c.Groups.Add(group);
+            arv = 1;
+            return arv;
+        }
+
+
 
 
         public static int deleteCamp(Camp camp)
         {
             int arv = 0;
-
-            //c.Camps.Find(camp.ID);
             c.Camps.Remove(camp);
-
             arv = 1;
             return arv;
-            
+        }
+
+
+        public static int deleteStudent(Student student)
+        {
+            int arv = 0;
+            c.Students.Remove(student);
+            arv = 1;
+            return arv;
+        }
+
+        public static int deleteGroup(Group group)
+        {
+            int arv = 0;
+            c.Groups.Remove(group);
+            arv = 1;
+            return arv;
         }
 
 
 
-        
 
 
 

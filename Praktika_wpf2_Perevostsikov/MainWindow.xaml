@@ -26,7 +26,7 @@
         <Button x:Name="btnAddCamp" Content="Add Camp" HorizontalAlignment="Left" Margin="229,60,0,0" VerticalAlignment="Top" Width="80" Click="btnAddCamp_Click"/>
         <Button x:Name="btnEditCamp" Content="Edit Camp" HorizontalAlignment="Left" Margin="320,60,0,0" VerticalAlignment="Top" Width="80" Click="btnEditCamp_Click"/>
         <Button x:Name="btnDeleteCamp" Content="Delete Camp" HorizontalAlignment="Left" Margin="412,59,0,0" VerticalAlignment="Top" Width="80" Click="btnDeleteCamp_Click"/>
-        <Button x:Name="btnShowStudent" Content="Show Students" HorizontalAlignment="Left" Margin="505,60,0,0" VerticalAlignment="Top" Width="94" Click="btnShowStudent_Click"/>
+        <Button x:Name="btnShowStudent" Content="Groups And Students" HorizontalAlignment="Left" Margin="505,60,0,0" VerticalAlignment="Top" Width="122" Click="btnShowStudent_Click"/>
 
     </Grid>
 </Window>

@@ -134,7 +134,6 @@ namespace Praktika_wpf2_Perevostsikov
             {
                 if (MessageBox.Show("Delete Camp \"" + DB.GetCampByCampId(campId).CampName + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
-                    //lbl2.Content = "1";
                 }
                 else
                 {
@@ -146,9 +145,7 @@ namespace Praktika_wpf2_Perevostsikov
                     {
                         DB.Save();
                         MessageBox.Show("Was deleted!", "Succesful");
-                        //MainWindow frm = new MainWindow();
                         CampList.SelectedIndex = 0;
-                        
                     }
                     else
                     {

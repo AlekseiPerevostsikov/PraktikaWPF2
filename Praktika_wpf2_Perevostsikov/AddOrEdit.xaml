@@ -27,10 +27,8 @@
         <TextBox x:Name="txt7" HorizontalAlignment="Left" Height="24" Margin="138.667,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <Label x:Name="lbl8" Content="Label" HorizontalAlignment="Left" Margin="0,317,0,0" VerticalAlignment="Top" Width="109" Grid.Column="1"/>
         <Button x:Name="btn" Content="Button" HorizontalAlignment="Left" Margin="138.667,35,0,0" VerticalAlignment="Top" Width="120" Click="btn_Click" Grid.Column="1"/>
-        <CheckBox x:Name="checkStudetnAdd" IsChecked="False" Content="Add Existing Student?" HorizontalAlignment="Left" Margin="70,38,0,0" VerticalAlignment="Top" Checked="CheckBox_cheked" Unchecked="UnchekedC" Grid.ColumnSpan="2"/>
         <ComboBox x:Name="cbExistingStudents" HorizontalAlignment="Left" Margin="138.667,75,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <ComboBox x:Name="cbExistingGroups" HorizontalAlignment="Left" Margin="138.667,321,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <Label x:Name="test" Content="Label" HorizontalAlignment="Left" Margin="17,75,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
