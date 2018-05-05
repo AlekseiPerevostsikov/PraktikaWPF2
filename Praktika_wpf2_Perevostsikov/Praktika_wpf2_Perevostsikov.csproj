@@ -67,6 +67,9 @@
     <Compile Include="AddOrEdit.xaml.cs">
       <DependentUpon>AddOrEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AllStudents.xaml.cs">
+      <DependentUpon>AllStudents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Camp.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="DataInitializer.cs" />
@@ -77,6 +80,10 @@
     </Compile>
     <Compile Include="Student.cs" />
     <Page Include="AddOrEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllStudents.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

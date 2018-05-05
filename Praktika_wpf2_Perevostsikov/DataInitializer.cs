@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Praktika_wpf2_Perevostsikov
 {
-    class DataInitializer : DropCreateDatabaseAlways<Context>
+    class DataInitializer : DropCreateDatabaseIfModelChanges<Context>
     {
 
         protected override void Seed(Context context)

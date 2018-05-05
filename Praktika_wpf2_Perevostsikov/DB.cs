@@ -66,6 +66,12 @@ namespace Praktika_wpf2_Perevostsikov
         }
 
 
+        public static List<Student> GetAllStudentByStudentLastName2(string lastName)
+        {
+            return c.Students.Where(a => a.LastName.ToLower().StartsWith(lastName.ToLower())).ToList();
+        }
+
+
         public static List<Group> GetAllGroupsByGroupName(string groupName, int campId)
         {
             return c.Groups.Where(a => a.GroupName.ToLower().StartsWith(groupName.ToLower()) && a.Camp.ID == campId).ToList();

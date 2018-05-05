@@ -191,20 +191,13 @@ namespace Praktika_wpf2_Perevostsikov
 
         private void btnAddGroup_Click(object sender, RoutedEventArgs e)
         {
-            if (GroupList.SelectedIndex >= 0)
-            {
-                Controll.GroupId = groupId;
-                Controll.CampId = campId;
+            Controll.GroupId = groupId;
+            Controll.CampId = campId;
 
-                Controll.AddOrEdit = "addGroup";
-                AddOrEdit editStud = new AddOrEdit();
-                editStud.Title = "Add Group";
-                editStud.Show();
-            }
-            else
-            {
-                MessageBox.Show("Group not choosed!", "Error");
-            }
+            Controll.AddOrEdit = "addGroup";
+            AddOrEdit editStud = new AddOrEdit();
+            editStud.Title = "Add Group";
+            editStud.Show();
         }
 
         private void btnEditGroup_Click(object sender, RoutedEventArgs e)

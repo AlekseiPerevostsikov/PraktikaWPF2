@@ -1,0 +1,28 @@
+﻿<Window x:Class="Praktika_wpf2_Perevostsikov.AllStudents"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Praktika_wpf2_Perevostsikov"
+        mc:Ignorable="d"
+        Title="AllStudents" Height="402.5" Width="900.5" WindowStartupLocation="CenterScreen" Activated="FormActivated">
+    <Grid>
+        <ListView SelectedIndex="0" x:Name="StudentList" Height="213" Margin="10,71,10,0" VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="170" Header="Last Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="120" Header="First Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SchoolName}" Width="130" Header="School"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding ClassNumber}" Width="70" Header="Class"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Group.GroupName}" Width="140" Header="Group Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Group.Camp.CampName}" Width="200" Header="Camp Name"/>
+                </GridView>
+            </ListView.View>
+
+
+        </ListView>
+        <TextBox x:Name="txtStudentLastName" HorizontalAlignment="Left" Height="26" Margin="184,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" TextChanged="TextChanged"/>
+        <Label Content="Searching: Last Name" HorizontalAlignment="Left" Margin="34,38,0,0" VerticalAlignment="Top" Width="144"/>
+
+    </Grid>
+</Window>

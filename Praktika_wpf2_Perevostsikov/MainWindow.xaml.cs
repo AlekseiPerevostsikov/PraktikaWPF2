@@ -174,6 +174,17 @@ namespace Praktika_wpf2_Perevostsikov
                 MessageBox.Show("Camp not choosed!", "Error");
             }
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void AllStudents_Click(object sender, RoutedEventArgs e)
+        {
+            AllStudents all = new AllStudents();
+            all.Show();
+        }
     }
 
     public static class Controll
