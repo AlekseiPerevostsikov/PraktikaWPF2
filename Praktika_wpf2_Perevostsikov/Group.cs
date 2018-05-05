@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace Praktika_wpf2_Perevostsikov
 {
-    public class Camp
+    public class Group
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        public string CampName { get; set; }
+        public int CampId { get; set; }
+        public string GroupName { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<Group> Group { get; set; }
-
+        public virtual Camp Camp { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

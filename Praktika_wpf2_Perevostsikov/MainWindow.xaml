@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:Praktika_wpf2_Perevostsikov"
         xmlns:Collections="clr-namespace:System.Collections;assembly=mscorlib" x:Class="Praktika_wpf2_Perevostsikov.MainWindow"
         mc:Ignorable="d"
-        Title="Camps" Height="388.235" Width="601.471" WindowStartupLocation="CenterScreen">
+        Title="Camps" Height="398.235" Width="645.471" WindowStartupLocation="CenterScreen" Activated="MainFormActivated">
     <Grid>
 
-        <ListView SelectedIndex="0" x:Name="CampList" Height="199" Margin="0,103,10,0" VerticalAlignment="Top">
+        <ListView SelectedIndex="0" x:Name="CampList" Height="199" Margin="0,103,0,0" VerticalAlignment="Top" SelectionChanged="ListViewSeletctionChanged">
 
 
             <ListView.View>
@@ -21,8 +21,12 @@
 
 
         </ListView>
-        <TextBox x:Name="txtCampName" HorizontalAlignment="Left" Height="23" Margin="191,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" TextChanged="txtCampName_TextChanged"/>
-        <Label Content="Search Camp by Name" HorizontalAlignment="Left" Margin="45,57,0,0" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="txtCampName" HorizontalAlignment="Left" Height="23" Margin="21,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" TextChanged="txtCampName_TextChanged"/>
+        <Label Content="Searching: Camp name" HorizontalAlignment="Left" Margin="21,28,0,0" VerticalAlignment="Top" Width="134"/>
+        <Button x:Name="btnAddCamp" Content="Add Camp" HorizontalAlignment="Left" Margin="229,60,0,0" VerticalAlignment="Top" Width="80" Click="btnAddCamp_Click"/>
+        <Button x:Name="btnEditCamp" Content="Edit Camp" HorizontalAlignment="Left" Margin="320,60,0,0" VerticalAlignment="Top" Width="80" Click="btnEditCamp_Click"/>
+        <Button x:Name="btnDeleteCamp" Content="Delete Camp" HorizontalAlignment="Left" Margin="412,59,0,0" VerticalAlignment="Top" Width="80" Click="btnDeleteCamp_Click"/>
+        <Button x:Name="btnShowStudent" Content="Show Students" HorizontalAlignment="Left" Margin="505,60,0,0" VerticalAlignment="Top" Width="94" Click="btnShowStudent_Click"/>
 
     </Grid>
 </Window>

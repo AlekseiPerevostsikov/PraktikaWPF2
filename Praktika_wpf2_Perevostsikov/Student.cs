@@ -18,14 +18,8 @@ namespace Praktika_wpf2_Perevostsikov
         public string ClassNumber { get; set; }
         public string Phone { get; set; }
         public string Adress { get; set; }
-        public int CampId { get; set; }
+        public int GroupId { get; set; }
 
-        public Student()
-        {
-
-        }
-        //s
-
-        public virtual Camp Camp { get; set; }
+        public virtual Group Group { get; set; }
     }
 }

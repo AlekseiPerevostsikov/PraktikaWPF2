@@ -22,6 +22,7 @@ namespace Praktika_wpf2_Perevostsikov
 
 
         public DbSet<Camp> Camps { get; set; }
+        public DbSet<Group> Groups { get; set; }
         public DbSet<Student> Students { get; set; }
        
 

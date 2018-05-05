@@ -21,6 +21,8 @@ namespace Praktika_wpf2_Perevostsikov
     /// </summary>
     public partial class MainWindow : Window
     {
+        Camp controlStatuss;
+        int campId;
         ObservableCollection<Camp> CampItems = new ObservableCollection<Camp>();
 
         public MainWindow()
@@ -28,17 +30,24 @@ namespace Praktika_wpf2_Perevostsikov
             InitializeComponent();
 
             DataInitializer data = new DataInitializer();
-            Context c = new Context();
-            data.InitializeDatabase(c);
+            //Context c = new Context();
+            data.InitializeDatabase(new Context());
 
-            loadCamplData();
-
-
+            //loadCamplData();
         }
+
+        private void MainFormActivated(object sender, EventArgs e)
+        {
+           
+            loadCamplData();
+        }
+
 
 
         public void loadCamplData()
         {
+            CampItems.Clear();
+            //ObservableCollection<Camp> CampItems = new ObservableCollection<Camp>();
             foreach (Camp i in DB.GetAllCamp())
             {
                 //this.hotelList.Items.Add(i);
@@ -64,8 +73,8 @@ namespace Praktika_wpf2_Perevostsikov
             {
                 //if (CampList.Items.Count>=0)
                 //{
-                    CampItems.Clear();
-                    loadCamplDataWhenSearching();
+                CampItems.Clear();
+                loadCamplDataWhenSearching();
                 //}
                 //else
                 //{
@@ -80,5 +89,101 @@ namespace Praktika_wpf2_Perevostsikov
                 loadCamplData();
             }
         }
+
+        private void ListViewSeletctionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CampList.SelectedIndex >= 0)
+            {
+                controlStatuss = (Camp)CampList.SelectedItems[0];
+                campId = controlStatuss.ID;
+            }
+        }
+
+
+
+        private void btnAddCamp_Click(object sender, RoutedEventArgs e)
+        {
+            Controll.AddOrEdit = "addCamp";
+            Controll.CampId = campId;
+            AddOrEdit addCamp = new AddOrEdit();
+            addCamp.Title = "Add Camp";
+            addCamp.Show();
+        }
+
+
+
+        private void btnEditCamp_Click(object sender, RoutedEventArgs e)
+        {
+            if (CampList.SelectedIndex >= 0)
+            {
+                Controll.CampId = campId;
+                Controll.AddOrEdit = "editCamp";
+                AddOrEdit editCamp = new AddOrEdit();
+                editCamp.Title = "Edit Camp";
+                editCamp.Show();
+            }
+            else
+            {
+                MessageBox.Show("Camp not choosed!", "Error");
+            }
+        }
+
+        private void btnDeleteCamp_Click(object sender, RoutedEventArgs e)
+        {
+            if (CampList.SelectedIndex >= 0)
+            {
+                if (MessageBox.Show("Delete Camp \"" + DB.GetCampByCampId(campId).CampName + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    //lbl2.Content = "1";
+                }
+                else
+                {
+                    Camp deleteCamp = DB.GetCampByCampId(campId);
+
+                    int arv = DB.deleteCamp(deleteCamp);
+
+                    if (arv != 0)
+                    {
+                        DB.Save();
+                        MessageBox.Show("Was deleted!", "Succesful");
+                        //MainWindow frm = new MainWindow();
+                        CampList.SelectedIndex = 0;
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while deleting!", "Error");
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Camp not choosed!", "Error");
+            }
+        }
+
+        private void btnShowStudent_Click(object sender, RoutedEventArgs e)
+        {
+            if (CampList.SelectedIndex >= 0)
+            {
+                Controll.CampId = campId;
+                ShowGroupAndStudents students = new ShowGroupAndStudents();
+                students.Title = "Camp: " + DB.GetCampByCampId(campId).CampName;
+                students.Show();
+            }
+            else
+            {
+                MessageBox.Show("Camp not choosed!", "Error");
+            }
+        }
+    }
+
+    public static class Controll
+    {
+        public static int CampId { get; set; }
+        public static int StudentId { get; set; }
+        public static string AddOrEdit { get; set; }
+
     }
 }

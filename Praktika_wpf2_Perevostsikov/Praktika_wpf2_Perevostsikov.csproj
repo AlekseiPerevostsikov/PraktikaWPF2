@@ -64,11 +64,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddOrEdit.xaml.cs">
+      <DependentUpon>AddOrEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Camp.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="DataInitializer.cs" />
     <Compile Include="DB.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="ShowGroupAndStudents.xaml.cs">
+      <DependentUpon>ShowGroupAndStudents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs" />
+    <Page Include="AddOrEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,6 +92,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ShowGroupAndStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
