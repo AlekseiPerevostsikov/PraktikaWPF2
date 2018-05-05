@@ -40,6 +40,8 @@ namespace Praktika_wpf2_Perevostsikov
         {
             loadGroupData();
             loadStudentlData();
+            StudentList.SelectedIndex = 0;
+            GroupList.SelectedIndex = 0;
         }
 
 
@@ -114,6 +116,7 @@ namespace Praktika_wpf2_Perevostsikov
                 controllStatussGroup = (Group)GroupList.SelectedItems[0];
                 groupId = controllStatussGroup.ID;
                 loadStudentlData();
+                StudentList.SelectedIndex = 0;
             }
         }
 
@@ -179,10 +182,10 @@ namespace Praktika_wpf2_Perevostsikov
 
 
 
-       
 
 
-        //buttons
+
+        //buttons Group
 
 
 
@@ -199,6 +202,55 @@ namespace Praktika_wpf2_Perevostsikov
         private void btnDeleteGroup_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+
+
+
+
+
+
+        //buttons Students
+
+
+        private void btnAddStudent_Click(object sender, RoutedEventArgs e)
+        {
+            Controll.AddOrEdit = "addStudent";
+            Controll.GroupId = groupId;
+            AddOrEdit addStu = new AddOrEdit();
+            addStu.Title = "Add Student";
+            addStu.Show();
+        }
+
+        private void btnEditStudent_Click(object sender, RoutedEventArgs e)
+        {
+            if (StudentList.SelectedIndex >= 0)
+            {
+                Controll.AddOrEdit = "editStudent";
+                Controll.GroupId = groupId;
+                Controll.StudentId = studentId;
+                AddOrEdit editStud = new AddOrEdit();
+                editStud.Title = "Edit Student";
+                editStud.Show();
+            }
+            else
+            {
+                MessageBox.Show("Student not choosed!", "Error");
+            }
+
+        }
+
+        private void btnDeleteStudent_Click(object sender, RoutedEventArgs e)
+        {
+            if (StudentList.SelectedIndex >= 0)
+            {
+                Controll.GroupId = groupId;
+                Controll.StudentId = studentId;
+            }
+            else
+            {
+                MessageBox.Show("Student not choosed!", "Error");
+            }
         }
     }
 }

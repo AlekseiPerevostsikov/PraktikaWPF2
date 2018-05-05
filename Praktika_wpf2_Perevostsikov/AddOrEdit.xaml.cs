@@ -19,20 +19,68 @@ namespace Praktika_wpf2_Perevostsikov
     /// </summary>
     public partial class AddOrEdit : Window
     {
+        int campId;
+        int groupId;
+        int studentId;
+
         public AddOrEdit()
         {
             InitializeComponent();
+
+            
+
+            
         }
 
         private void FormAddOrEditLoaded(object sender, RoutedEventArgs e)
         {
+            campId = Controll.CampId;
+            groupId = Controll.GroupId;
+
+            Dictionary<int, string> cbGroupData = new Dictionary<int, string>();
+            var groups = DB.GetAllGroupsByCampId(campId);
+            foreach (var item in groups)
+            {
+                cbGroupData.Add(item.ID, item.GroupName);
+            }
+
+            cbExistingGroups.ItemsSource = cbGroupData;
+            cbExistingGroups.DisplayMemberPath = "Value";
+            cbExistingGroups.SelectedValuePath = "Key";
+
+            //cbExistingStudents.SelectedIndex = 0;
+
+
+
+            Dictionary<int, string> cbStudentData = new Dictionary<int, string>();
+            var allStudents = DB.GetAllStudents();
+            foreach (var item in allStudents)
+            {
+                cbStudentData.Add(item.ID, item.FirstName + " " + item.LastName + " (" + item.Phone + ")");
+            }
+            cbExistingStudents.ItemsSource = cbStudentData;
+            cbExistingStudents.DisplayMemberPath = "Value";
+            cbExistingStudents.SelectedValuePath = "Key";
+
+            cbExistingStudents.SelectedIndex = 0;
+
+
+
+           
+
+
+
+
+
+            checkStudetnAdd.Visibility = Visibility.Hidden;
+            cbExistingGroups.Visibility = Visibility.Hidden;
+            cbExistingStudents.Visibility = Visibility.Hidden;
 
             if (Controll.AddOrEdit == "editCamp")
             {
                 Camp tempCamp = DB.GetCampByCampId(Controll.CampId);
                 txt1.Text = tempCamp.CampName;
                 txt2.Text = tempCamp.Description;
-
 
                 btn.Content = "Update Camp";
 
@@ -89,24 +137,116 @@ namespace Praktika_wpf2_Perevostsikov
 
 
 
+
+
             if (Controll.AddOrEdit == "addStudent")
             {
+                btn.Content = "Add Student";
 
-                DB.Save();
+
+                cbExistingStudents.Visibility = Visibility.Hidden;
+
+                lbl1.Visibility = Visibility.Visible;
+                lbl2.Visibility = Visibility.Visible;
+                lbl3.Visibility = Visibility.Visible;
+                lbl4.Visibility = Visibility.Visible;
+                lbl5.Visibility = Visibility.Visible;
+                lbl6.Visibility = Visibility.Visible;
+                lbl7.Visibility = Visibility.Visible;
+                lbl8.Visibility = Visibility.Visible;
+
+                lbl1.Content = "First Name";
+                lbl2.Content = "Last Name";
+                lbl3.Content = "Isikukood";
+                lbl4.Content = "School Name";
+                lbl5.Content = "Class Number";
+                lbl6.Content = "Phone";
+                lbl7.Content = "Adress";
+                lbl8.Content = "Group";
+
+                txt1.Visibility = Visibility.Visible;
+                txt2.Visibility = Visibility.Visible;
+                txt3.Visibility = Visibility.Visible;
+                txt4.Visibility = Visibility.Visible;
+                txt5.Visibility = Visibility.Visible;
+                txt6.Visibility = Visibility.Visible;
+                txt7.Visibility = Visibility.Visible;
+                cbExistingGroups.Visibility = Visibility.Visible;
+
+                cbExistingGroups.SelectedIndex = 0;
+
+
+                checkStudetnAdd.Visibility = Visibility.Visible;
             }
             else if (Controll.AddOrEdit == "editStudent")
             {
+                studentId = Controll.StudentId;
 
-                DB.Save();
+                var ts = DB.GetStudentByStudentId(studentId);
+                txt1.Text = ts.FirstName;
+                txt2.Text = ts.LastName;
+                txt3.Text = ts.Isikukood;
+                txt4.Text = ts.SchoolName;
+                txt5.Text = ts.ClassNumber;
+                txt6.Text = ts.Phone;
+                txt7.Text = ts.Adress;
+
+                cbExistingGroups.SelectedItem = ((KeyValuePair<int, string>)cbExistingStudents.SelectedItem).Value;
+
+
+
+                btn.Content = "Update Student";
+
+                lbl1.Visibility = Visibility.Visible;
+                lbl2.Visibility = Visibility.Visible;
+                lbl3.Visibility = Visibility.Visible;
+                lbl4.Visibility = Visibility.Visible;
+                lbl5.Visibility = Visibility.Visible;
+                lbl6.Visibility = Visibility.Visible;
+                lbl7.Visibility = Visibility.Visible;
+                lbl8.Visibility = Visibility.Visible;
+
+                lbl1.Content = "First Name";
+                lbl2.Content = "Last Name";
+                lbl3.Content = "Isikukood";
+                lbl4.Content = "School Name";
+                lbl5.Content = "Class Number";
+                lbl6.Content = "Phone";
+                lbl7.Content = "Adress";
+                lbl8.Content = "Group";
+
+                txt1.Visibility = Visibility.Visible;
+                txt2.Visibility = Visibility.Visible;
+                txt3.Visibility = Visibility.Visible;
+                txt4.Visibility = Visibility.Visible;
+                txt5.Visibility = Visibility.Visible;
+                txt6.Visibility = Visibility.Visible;
+                txt7.Visibility = Visibility.Visible;
+                cbExistingGroups.Visibility = Visibility.Visible;
+                //cbExistingGroups.SelectedItem = DB.GetGroupByGroupId(groupId).GroupName;
+
+
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+        //button pressed
+
 
         private void btn_Click(object sender, RoutedEventArgs e)
         {
             if (Controll.AddOrEdit == "editCamp")
             {
-
                 Camp updateCamp = new Camp();
                 updateCamp.ID = Controll.CampId;
                 updateCamp.CampName = txt1.Text;
@@ -123,12 +263,9 @@ namespace Praktika_wpf2_Perevostsikov
                 {
                     MessageBox.Show("Error while updating!", "Error");
                 }
-
-
             }
             else if (Controll.AddOrEdit == "addCamp")
             {
-
                 Camp addCamp = new Camp();
                 addCamp.ID = Controll.CampId + 1;
                 addCamp.CampName = txt1.Text;
@@ -153,13 +290,109 @@ namespace Praktika_wpf2_Perevostsikov
 
             if (Controll.AddOrEdit == "addStudent")
             {
-                btn.Content = "Add Student";
+               // studentId = ((KeyValuePair<int, string>)cbExistingStudents.SelectedItem).Key;
 
             }
             else if (Controll.AddOrEdit == "editStudent")
             {
-                btn.Content = "Edit Student";
+                Student newStudent = new Student();
+                newStudent.ID = studentId;
+                newStudent.FirstName = txt1.Text;
+                newStudent.LastName = txt2.Text;
+                newStudent.Isikukood = txt3.Text;
+                newStudent.SchoolName = txt4.Text;
+                newStudent.ClassNumber = txt5.Text;
+                newStudent.Phone = txt6.Text;
+                newStudent.Adress = txt7.Text;
+
+                newStudent.GroupId = ((KeyValuePair<int, string>)cbExistingGroups.SelectedItem).Key;
+
+
+                int arv = DB.updateStudent(newStudent);
+
+                if (arv == 1)
+                {
+                    MessageBox.Show("Was updated!", "Succesful");
+                    DB.Save();
+                }
+                else
+                {
+                    MessageBox.Show("Error while updating!", "Error");
+                }
+
             }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        private void CheckBox_cheked(object sender, RoutedEventArgs e)
+        {
+            cbExistingStudents.Visibility = Visibility.Visible;
+            lbl1.Content = checkStudetnAdd.IsChecked;
+
+            lbl1.Visibility = Visibility.Visible;
+            lbl2.Visibility = Visibility.Hidden;
+            lbl3.Visibility = Visibility.Hidden;
+            lbl4.Visibility = Visibility.Hidden;
+            lbl5.Visibility = Visibility.Hidden;
+            lbl6.Visibility = Visibility.Hidden;
+            lbl7.Visibility = Visibility.Hidden;
+            lbl8.Visibility = Visibility.Hidden;
+
+            lbl1.Content = "Select Student";
+
+
+            txt1.Visibility = Visibility.Hidden;
+            txt2.Visibility = Visibility.Hidden;
+            txt3.Visibility = Visibility.Hidden;
+            txt4.Visibility = Visibility.Hidden;
+            txt5.Visibility = Visibility.Hidden;
+            txt6.Visibility = Visibility.Hidden;
+            txt7.Visibility = Visibility.Hidden;
+            cbExistingGroups.Visibility = Visibility.Hidden;
+            cbExistingStudents.SelectedIndex = 0;
+
+        }
+
+        private void UnchekedC(object sender, RoutedEventArgs e)
+        {
+            cbExistingStudents.Visibility = Visibility.Hidden;
+
+            lbl1.Visibility = Visibility.Visible;
+            lbl2.Visibility = Visibility.Visible;
+            lbl3.Visibility = Visibility.Visible;
+            lbl4.Visibility = Visibility.Visible;
+            lbl5.Visibility = Visibility.Visible;
+            lbl6.Visibility = Visibility.Visible;
+            lbl7.Visibility = Visibility.Visible;
+            lbl8.Visibility = Visibility.Visible;
+
+            lbl1.Content = "First Name";
+            lbl2.Content = "Last Name";
+            lbl3.Content = "Isikukood";
+            lbl4.Content = "School Name";
+            lbl5.Content = "Class Number";
+            lbl6.Content = "Phone";
+            lbl7.Content = "Adress";
+            lbl8.Content = "Group";
+
+            txt1.Visibility = Visibility.Visible;
+            txt2.Visibility = Visibility.Visible;
+            txt3.Visibility = Visibility.Visible;
+            txt4.Visibility = Visibility.Visible;
+            txt5.Visibility = Visibility.Visible;
+            txt6.Visibility = Visibility.Visible;
+            txt7.Visibility = Visibility.Visible;
+            cbExistingGroups.Visibility = Visibility.Visible;
         }
     }
 }

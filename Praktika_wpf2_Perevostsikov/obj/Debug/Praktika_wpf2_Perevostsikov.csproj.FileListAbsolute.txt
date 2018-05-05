@@ -40,3 +40,4 @@ C:\Users\Администратор\Source\Repos\PraktikaWPF2\Praktika_wpf2_Pere
 C:\Users\Администратор\Source\Repos\PraktikaWPF2\Praktika_wpf2_Perevostsikov\obj\Debug\AddOrEdit.baml
 C:\Users\Администратор\Source\Repos\PraktikaWPF2\Praktika_wpf2_Perevostsikov\obj\Debug\ShowGroupAndStudents.g.cs
 C:\Users\Администратор\Source\Repos\PraktikaWPF2\Praktika_wpf2_Perevostsikov\obj\Debug\ShowGroupAndStudents.baml
+C:\Users\Администратор\Source\Repos\PraktikaWPF2\Praktika_wpf2_Perevostsikov\obj\Debug\Praktika_wpf2_Perevostsikov.csprojResolveAssemblyReference.cache

@@ -30,10 +30,27 @@ namespace Praktika_wpf2_Perevostsikov
         }
 
 
+        public static Group GetGroupByGroupId(int groupId)
+        {
+            return c.Groups.Where(a => a.ID == groupId).First();
+        }
+
         public static List<Student> GetAllStudentsByGroupId(int groupId)
         {
             return c.Students.Where(a=>a.Group.ID== groupId).ToList();
         }
+
+
+        public static List<Student> GetAllStudents()
+        {
+            return c.Students.OrderByDescending(a=>a.LastName).ToList();
+        }
+
+        public static Student GetStudentByStudentId(int studentId)
+        {
+            return c.Students.Where(a => a.ID==studentId).First();
+        }
+
 
         public static List<Student> GetAllStudentByStudentLastName(string lastName, int groupId)
         {
@@ -75,6 +92,32 @@ namespace Praktika_wpf2_Perevostsikov
             return arv;
         }
 
+
+
+
+        public static int updateStudent(Student student)
+        {
+            int arv = 0;
+
+            //foreach (var i in c.Students)
+            //{
+            //    if (i.Camp.ID == camp.ID)
+            //    {
+            //        i.Camp = camp;
+            //    }
+            //}
+
+            var original = c.Students.Find(student.ID);
+            c.Entry(original).CurrentValues.SetValues(student);
+
+            arv = 1;
+
+            return arv;
+        }
+
+
+
+
         public static int addCamp(Camp camp)
         {
             int arv = 0;
@@ -97,6 +140,12 @@ namespace Praktika_wpf2_Perevostsikov
             return arv;
             
         }
+
+
+
+        
+
+
 
         public static void Save()
         {

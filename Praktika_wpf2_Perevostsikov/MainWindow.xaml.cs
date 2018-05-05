@@ -183,6 +183,7 @@ namespace Praktika_wpf2_Perevostsikov
     {
         public static int CampId { get; set; }
         public static int StudentId { get; set; }
+        public static int GroupId { get; set; }
         public static string AddOrEdit { get; set; }
 
     }

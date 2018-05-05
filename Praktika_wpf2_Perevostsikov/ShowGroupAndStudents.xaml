@@ -46,8 +46,8 @@
         <Button x:Name="btnAddGroup" Content="Add Group" HorizontalAlignment="Left" Margin="725,87,0,0" VerticalAlignment="Top" Width="90" Click="btnAddGroup_Click"/>
         <Button x:Name="btnEditGroup" Content="Edit Group" HorizontalAlignment="Left" Margin="725,147,0,0" VerticalAlignment="Top" Width="90" Click="btnEditGroup_Click"/>
         <Button x:Name="btnDeleteGroup" Content="Delete Group" HorizontalAlignment="Left" Margin="725,206,0,0" VerticalAlignment="Top" Width="90" Click="btnDeleteGroup_Click"/>
-        <Button x:Name="btnAddStudent" Content="Add Student" HorizontalAlignment="Left" Margin="851,87,0,0" VerticalAlignment="Top" Width="90" Click="btnAddGroup_Click"/>
-        <Button x:Name="btnEditStudent" Content="Edit Student" HorizontalAlignment="Left" Margin="851,147,0,0" VerticalAlignment="Top" Width="90" Click="btnAddGroup_Click"/>
-        <Button x:Name="btnDeleteStudent" Content="Delete Student" HorizontalAlignment="Left" Margin="851,206,0,0" VerticalAlignment="Top" Width="90" Click="btnAddGroup_Click"/>
+        <Button x:Name="btnAddStudent" Content="Add Student" HorizontalAlignment="Left" Margin="851,87,0,0" VerticalAlignment="Top" Width="90" Click="btnAddStudent_Click"/>
+        <Button x:Name="btnEditStudent" Content="Edit Student" HorizontalAlignment="Left" Margin="851,147,0,0" VerticalAlignment="Top" Width="90" Click="btnEditStudent_Click"/>
+        <Button x:Name="btnDeleteStudent" Content="Delete Student" HorizontalAlignment="Left" Margin="851,206,0,0" VerticalAlignment="Top" Width="90" Click="btnDeleteStudent_Click"/>
     </Grid>
 </Window>
